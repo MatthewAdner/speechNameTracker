@@ -1,0 +1,4 @@
+live speech to text 
+has a live count of how many times a student's name is said 
+google has a speech api that i can use
+student names would be gotten from a csv
