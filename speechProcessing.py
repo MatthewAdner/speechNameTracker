@@ -28,16 +28,6 @@ def gotName(sentence, calledDict):
             calledDict[word.lower()]+=1
 
 
-    
-    '''for word in wordList:
-        gotWord(word)'''
-    '''for word in 
-        
-    if currentWord.lower() in calledDict:
-        calledDict[currentWord.lower()]+=1
-
-    print(calledDict)'''
-
 
 
 r = sr.Recognizer()
