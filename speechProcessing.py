@@ -1,24 +1,69 @@
-import sounddevice as sd
+#import sounddevice as sd
+ 
 import speech_recognition as sr
+import re
+import matplotlib.pyplot as plt
 
 print('iran')
+mLis = sr.Microphone.list_microphone_names()
+
+mic = sr.Microphone(device_index=1)#mLis.index('Microphone (Logitech Mic (Commu'))
+print(sr.Microphone.list_microphone_names())
+
+# list of names
+nameList = ['matthew','adam','lauren','jared']
+
+googleCalledDict = {}
+sphinxCalledDict = {}
+for name in nameList:
+    googleCalledDict[name]=0
+    sphinxCalledDict[name]=0
+
+# function to check for a word
+def gotName(sentence, calledDict):
+    
+    wordList = re.sub("[^\w]", " ",  sentence).split()
+    for word in wordList:
+        if word.lower() in calledDict:
+            calledDict[word.lower()]+=1
+
+
+    
+    '''for word in wordList:
+        gotWord(word)'''
+    '''for word in 
+        
+    if currentWord.lower() in calledDict:
+        calledDict[currentWord.lower()]+=1
+
+    print(calledDict)'''
 
 
 
-'''import speech_recognition as sr
-r=sr.Recognizer()
-with sr.Microphone() as source:  
-    print("Please wait. Calibrating microphone...")  
-    # listen for 5 seconds and create the ambient noise energy level  
-    r.adjust_for_ambient_noise(source, duration=5)  
-    print("Say something!")  
-    audio = r.listen(source)  
 
-    # recognize speech using Sphinx  
-    try:  
-        print("Sphinx thinks you said '" + r.recognize_sphinx(audio) + "'")  
-    except sr.UnknownValueError:  
-        print("Sphinx could not understand audio")  
-    except sr.RequestError as e:  
-        print("Sphinx error; {0}".format(e))
-        '''
+
+
+r = sr.Recognizer()
+
+with mic as source:
+    while True:
+        try:
+            audio=r.listen(source)
+            
+            '''print('sphinx:')
+            spinxTemp = r.recognize_sphinx(audio)
+            gotName(spinxTemp, sphinxCalledDict)
+            print(spinxTemp)
+            print(sphinxCalledDict)'''
+
+            googleTemp = r.recognize_google(audio)
+            print('google:')
+            gotName(googleTemp, googleCalledDict)
+            print(googleTemp)
+            print(googleCalledDict)
+            
+        except KeyboardInterrupt:
+            exit('You interrupted through the keyboard.')
+        except:
+            print('There was a problem.')
+
