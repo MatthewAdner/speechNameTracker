@@ -40,9 +40,6 @@ def gotName(sentence, calledDict):
 
 
 
-
-
-
 r = sr.Recognizer()
 
 with mic as source:
@@ -61,7 +58,7 @@ with mic as source:
             gotName(googleTemp, googleCalledDict)
             print(googleTemp)
             print(googleCalledDict)
-            
+
         except KeyboardInterrupt:
             exit('You interrupted through the keyboard.')
         except:
