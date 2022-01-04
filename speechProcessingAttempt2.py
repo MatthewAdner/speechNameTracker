@@ -5,6 +5,7 @@ import speech_recognition as sr
 import re
 import matplotlib.pyplot as plt
 
+
 # list of availible microphones
 mLis = sr.Microphone.list_microphone_names()
 
@@ -51,14 +52,62 @@ def gotName(sentence, calledDict):
             calledDict[word.lower()]+=1
 
 
+#getAudio was yoinked from internet https://www.geeksforgeeks.org/personal-voice-assistant-in-python/
+def get_audio():
+
+    rObject = sr.Recognizer()
+    audio = ''
+  
+    with sr.Microphone() as source:
+        print("Started...") # testing
+          
+        # recording the audio using speech recognition
+        audio = rObject.listen(source, phrase_time_limit = 5) # limit 5 secs
+    print("Stop.") # testing
+  
+    try:
+  
+        text = rObject.recognize_google(audio, language ='en-US')
+        print("You : ", text) # testing
+        return text
+  
+
+    except:
+  
+        print("Could not understand your audio, PLease try again !") # testing
+        return 0
 
 
+students = nameList
+timesCalled = [googleCalledDict[nameList[0]],googleCalledDict[nameList[1]],googleCalledDict[nameList[2]],googleCalledDict[nameList[3]],googleCalledDict[nameList[4]]]
+
+
+
+while True:
+    googleTemp = get_audio()
+    try:
+        gotName(googleTemp, googleCalledDict)
+    # allows the program to exit when ctrl+c
+    except KeyboardInterrupt:
+        exit('You interrupted through the keyboard.')
+    # sometimes theres an error, maybe if it can't understand what it hears
+    except:
+        print('There was a problem.')
+    print(googleTemp)
+    print(googleCalledDict)
+
+
+
+###old stuff
+'''
 r = sr.Recognizer()
 import matplotlib.pyplot as plt#; plt.rcdefaults()
 #import numpy as np
 import matplotlib.pyplot as plt
 
+
 students = nameList#['Python', 'C++', 'Java', 'Perl', 'Scala', 'Lisp']
+
 #y_pos = objects# = np.arange(len(objects))
 timesCalled = [googleCalledDict[nameList[0]],googleCalledDict[nameList[1]],googleCalledDict[nameList[2]],googleCalledDict[nameList[3]],googleCalledDict[nameList[4]]]
 
@@ -75,11 +124,7 @@ with mic as source:
             print('iran')
             audio=r.listen(source)
             
-            '''print('sphinx:')
-            spinxTemp = r.recognize_sphinx(audio)
-            gotName(spinxTemp, sphinxCalledDict)
-            print(spinxTemp)
-            print(sphinxCalledDict)'''
+
 
             googleTemp = r.recognize_google(audio) # returns a string of what the speech recognition things was said
             print('google:')
@@ -95,3 +140,4 @@ with mic as source:
         except:
             print('There was a problem.')
 
+'''
