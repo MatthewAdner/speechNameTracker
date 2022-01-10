@@ -1,0 +1,8 @@
+2022-01-09 18:52:42.301747
+words and potatoes my name is Matthew
+{'matthew': 1, 'adam': 0, 'lauren': 0, 'jared': 0, 'jason': 0, 'couldnotunderstandwords': 0}
+
+2022-01-09 18:52:49.582805
+couldnotunderstandwords
+{'matthew': 1, 'adam': 0, 'lauren': 0, 'jared': 0, 'jason': 0, 'couldnotunderstandwords': 1}
+

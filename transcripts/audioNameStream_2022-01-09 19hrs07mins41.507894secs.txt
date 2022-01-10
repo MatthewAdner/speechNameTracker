@@ -1,0 +1,8 @@
+2022-01-09 19:07:48.515317
+now hopefully the tax filing look better Matthew
+{'matthew': 1, 'adam': 0, 'lauren': 0, 'jared': 0, 'jason': 0, 'couldnotunderstandwords': 0}
+
+2022-01-09 19:07:56.057755
+oh man look at these words that are coming out of the computer
+{'matthew': 1, 'adam': 0, 'lauren': 0, 'jared': 0, 'jason': 0, 'couldnotunderstandwords': 0}
+
